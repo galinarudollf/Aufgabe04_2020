@@ -9,16 +9,36 @@ enum Connectivity {
     offline
 }
 abstract class Smartphone {
+    + PhoneNumber : string
+    + Smartphone(number:string)
+    + makeACall(phoneNumber:string) : void
+    + receiveACall(incommingNumber:string) : void
+    + {abstract} getOS() : string
 }
 interface IAppStore {
+    BuyAppFromAppStore(AppName:string) : void
 }
 class ApplePhone {
+    + AppleID : string
+    + ApplePhone(number:string)
+    + BuyAppFromAppStore(AppName:string) : void
+    + <<override>> getOS() : string
+    + LocalizeMyApplePhone() : void
 }
 abstract class AndroidPhone {
+    + GoogleUserAccount : string
+    + AndroidPhone(number:string)
+    + BuyAppFromAppStore(AppName:string) : void
+    + {abstract} RunVendorSpecificLocalization() : void
+    + <<override>> getOS() : string
 }
 class SamsungPhone {
+    + SamsungPhone(number:string)
+    + <<override>> RunVendorSpecificLocalization() : void
 }
-
+class Program {
+    {static} Main(args:string[]) : void
+}
 Smartphone o-- "PhoneState" State
 Smartphone o-- "ConnectionState" Connectivity
 Smartphone <|-- ApplePhone
