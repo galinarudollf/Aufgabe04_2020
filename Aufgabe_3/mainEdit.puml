@@ -2,43 +2,23 @@
 enum State {
     off,
     on,
-    unknown,
+    unknown
 }
 enum Connectivity {
     connected,
-    offline,
+    offline
 }
 abstract class Smartphone {
-    + PhoneNumber : string <<get>> <<set>>
-    + Smartphone(number:string)
-    + makeACall(phoneNumber:string) : void
-    + receiveACall(incommingNumber:string) : void
-    + {abstract} getOS() : string
 }
 interface IAppStore {
-    BuyAppFromAppStore(AppName:string) : void
 }
 class ApplePhone {
-    + AppleID : string <<get>> <<set>>
-    + ApplePhone(number:string)
-    + BuyAppFromAppStore(AppName:string) : void
-    + <<override>> getOS() : string
-    + LocalizeMyApplePhone() : void
 }
 abstract class AndroidPhone {
-    + GoogleUserAccount : string <<get>> <<set>>
-    + AndroidPhone(number:string)
-    + BuyAppFromAppStore(AppName:string) : void
-    + {abstract} RunVendorSpecificLocalization() : void
-    + <<override>> getOS() : string
 }
 class SamsungPhone {
-    + SamsungPhone(number:string)
-    + <<override>> RunVendorSpecificLocalization() : void
 }
-class Program {
-    {static} Main(args:string[]) : void
-}
+
 Smartphone o-- "PhoneState" State
 Smartphone o-- "ConnectionState" Connectivity
 Smartphone <|-- ApplePhone
