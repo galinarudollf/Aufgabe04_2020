@@ -1,0 +1,9 @@
+@startuml
+interface iSmartPhone {
+    # PhoneNumber : string <<get>> <<set>>
+    + getOS() : string
+}
+class Program {
+    {static} Main(args:string[]) : void
+}
+@enduml
